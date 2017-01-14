@@ -1,5 +1,6 @@
 // ==UserScript==
 // @name        Twitch Highlight Mentions
+// @Author      /u/Signe_
 // @namespace   *.twitch.tv/*/chat
 // @include       https://*.twitch.tv/*/chat
 // @version     1
