@@ -18,7 +18,7 @@ function Loop() {
   if (hasChatPanel) {
     var From = document.getElementsByClassName('from'); //Gets the full chat message
     for (var i = 0; i < From.length; i++) {
-      //No reason to grab the jtv bots color (fun fact its color is 556)
+      //No reason to grab the jtv bots color
       if (From[i].innerText != 'jtv') {
         //Adds that persons name and style color to the dictionary
         AddToDict('@' + From[i].innerText.toLowerCase(), From[i].getAttribute('style'));
