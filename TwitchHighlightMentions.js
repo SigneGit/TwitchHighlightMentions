@@ -6,7 +6,6 @@
 // @version     1
 // @grant       none
 // ==/UserScript==
-
 //Starts the loop
 var Timer = setInterval(Loop, 1000);
 //How many iteractions the loop has gone through (resets every 60 seconds)
@@ -26,16 +25,23 @@ function Loop() {
     }
     var UserMention = document.getElementsByClassName('user-mention'); //Grabs all the user mentions
     for (var j = 0; j < UserMention.length; j++) {
-      //Sets the color of the mention to be that persons color in chat
-      UserMention[j].setAttribute('style', ReturnFromDict(UserMention[j].innerText.toLowerCase()));
-      if(DictContains('*' + UserMention[j].innerText.toLowerCase())){
-        //Sets the persons name to be the correct case (@example would become @Example if that was there name)
-        UserMention[j].innerText = ReturnFromDict('*' + UserMention[j].innerText.toLowerCase());
+      //If the mention has a style attribute then it has already been modified
+      if (!UserMention[j].hasAttribute('style')) {
+        //Don't set the style attribute if it doesn't exist yet
+        var DictColor = ReturnFromDict(UserMention[j].innerText.toLowerCase());
+        if (DictColor != '') {
+          //Sets the color of the mention to be that persons color in chat
+          UserMention[j].setAttribute('style', DictColor);
+          if (DictContains('*' + UserMention[j].innerText.toLowerCase())) {
+            //Sets the persons name to be the correct case (@example would become @Example if that was there name)
+            UserMention[j].innerText = ReturnFromDict('*' + UserMention[j].innerText.toLowerCase());
+          }
+        }
       }
     }
-  }
+  } 
   else {
-    if(Counter > 8){
+    if (Counter > 8) {
       Counter = 0;
       clearInterval(Timer); //If 8 seconds pass clear the timer. no reason to run longer than that
     }
@@ -44,6 +50,7 @@ function Loop() {
   if (Counter > 60) {
     // clear Counter and Dictionary after 60 seconds
     Counter = 0;
+    delete Dictionary;
     Dictionary = [];
   }
 }
@@ -58,27 +65,38 @@ function ReturnFromDict(Key) {
 function AddToDict(Key, Value) {
   //Adds a key value pair to the dictionary
   var _key = Key.toLowerCase();
-  if (!DictContains(_key)){
+  if (!DictContains(_key)) {
     Dictionary[_key] = Value;
+  } else {
+    ReplaceDictValue(_key, Value);
   }
-  if(!DictContains('*' + _key)){
+  if (!DictContains('*' + _key)) {
     Dictionary['*' + _key] = Key;
+  }
+}
+function ReplaceDictValue(Key, Value) {
+  if (DictContains(Key)) {
+    Key = Key.toLowerCase();
+    var DictValue = Dictionary[Key];
+    if (DictValue != Value) {
+      Dictionary[Key] = Value;
+    }
   }
 }
 function DictContains(Key) {
   //Checks if the Dictionary conains a key
   if (Dictionary[Key] == undefined) {
     return false;
-  }
+  } 
   else {
     return true;
   }
 }
 function hasChatPanel() {
   //Checks if the current page has a chat panel
-  if(document.getElementsByClassName('chat-room').length > 0){
+  if (document.getElementsByClassName('chat-room').length > 0) {
     return true;
-  }else{
+  } else {
     return false;
   }
 }
