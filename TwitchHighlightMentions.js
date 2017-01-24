@@ -50,7 +50,7 @@ function Loop() {
   if (Counter > 60) {
     // clear Counter and Dictionary after 60 seconds
     Counter = 0;
-    delete Dictionary;
+    Dictionary = undefined;
     Dictionary = [];
   }
 }
