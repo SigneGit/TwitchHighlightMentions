@@ -1,2 +1,11 @@
 # TwitchHighlightMentions
-This is a userscript for setting the color of a mention to the mentioned users chat color
+
+###### This userscript is for [TwitchTV](https://twitch.tv) this sets the color of a mention to the mentioned users chat color
+
+
+# Requires one of the following to install
+
+[GreaseMonkey for Firefox](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
+
+[TamperMonkey for Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)
+
