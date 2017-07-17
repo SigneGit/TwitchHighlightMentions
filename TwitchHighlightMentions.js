@@ -23,7 +23,7 @@ function Loop() {
         AddToDict('@' + From[i].innerText, From[i].getAttribute('style'));
       }
     }
-    var UserMention = document.getElementsByClassName('user-mention'); //Grabs all the user mentions
+    var UserMention = document.getElementsByClassName('mentioning'); //Grabs all the user mentions
     for (var j = 0; j < UserMention.length; j++) {
       //If the mention has a style attribute then it has already been modified
       if (!UserMention[j].hasAttribute('style')) {
