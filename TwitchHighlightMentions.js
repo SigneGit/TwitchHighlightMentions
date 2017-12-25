@@ -14,8 +14,9 @@ var Counter = 0;
 var Dictionary = [];
 //The main loop for the script
 function Loop() {
-  if (hasChatPanel) {
-    var From = document.getElementsByClassName('from'); //Gets the full chat message
+  if (hasChatPanel()) {
+    //Gets the full chat message
+    var From = document.getElementsByClassName('from');
     for (var i = 0; i < From.length; i++) {
       //No reason to grab the jtv bots color
       if (From[i].innerText != 'jtv') {
@@ -23,7 +24,8 @@ function Loop() {
         AddToDict('@' + From[i].innerText, From[i].getAttribute('style'));
       }
     }
-    var UserMention = document.getElementsByClassName('mentioning'); //Grabs all the user mentions
+    //Grabs all the user mentions
+    var UserMention = document.getElementsByClassName('mentioning');
     for (var j = 0; j < UserMention.length; j++) {
       //If the mention has a style attribute then it has already been modified
       if (!UserMention[j].hasAttribute('style')) {
@@ -41,9 +43,10 @@ function Loop() {
     }
   } 
   else {
+    //If 8 seconds pass clear the timer. no reason to run longer than that
     if (Counter > 8) {
       Counter = 0;
-      clearInterval(Timer); //If 8 seconds pass clear the timer. no reason to run longer than that
+      clearInterval(Timer);
     }
   }
   Counter++;
