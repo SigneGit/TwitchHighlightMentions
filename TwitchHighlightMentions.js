@@ -18,11 +18,8 @@ function Loop() {
     //Gets the full chat message
     var From = document.getElementsByClassName('from');
     for (var i = 0; i < From.length; i++) {
-      //No reason to grab the jtv bots color
-      if (From[i].innerText != 'jtv') {
         //Adds that persons name and style color to the dictionary
         AddToDict('@' + From[i].innerText, From[i].getAttribute('style'));
-      }
     }
     //Grabs all the user mentions
     var UserMention = document.getElementsByClassName('mentioning');
@@ -53,7 +50,6 @@ function Loop() {
   if (Counter > 60) {
     // clear Counter and Dictionary after 60 seconds
     Counter = 0;
-    Dictionary = undefined;
     Dictionary = [];
   }
 }
