@@ -5,12 +5,6 @@
 
 ![Screenshot](http://imgur.com/xtiqNBK.jpg "Screenshot")
 
-# Features
-
-Sets a mention to the mentioned users chat color
-
-Sets their mention to the correct case as seen above.
-
 # Requires one of the following to install
 
 [GreaseMonkey for Firefox](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
